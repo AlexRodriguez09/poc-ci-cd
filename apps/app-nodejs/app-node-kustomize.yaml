@@ -4,6 +4,7 @@ metadata:
   name: poc-node-kustomize
   namespace: flux-system
 spec:
+  interval: 1m0s
   path: ./apps/app-nodejs/deploy
   prune: true
   sourceRef:
