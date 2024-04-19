@@ -4,7 +4,7 @@ metadata:
   name: poc-nodejs-deployment
   namespace: poc-ci-cd-node
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: app-nodejs
