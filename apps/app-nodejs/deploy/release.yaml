@@ -1,0 +1,20 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: nuamx-poc-helm
+  namespace: helm-poc
+spec:
+  releaseName: nuamx-poc-helm
+  chart:
+    spec:
+      chart: test-devops/charts/nodejs
+      sourceRef:
+        kind: HelmRepository
+        name: nuamx
+        namespace: flux-system
+  install:
+    remediation:
+      retries: -1
+  interval: 10m
+  values:
+    imagePull: harbor-credentials
