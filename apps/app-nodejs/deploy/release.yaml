@@ -10,7 +10,7 @@ spec:
       chart: test-devops/charts/nodejs
       sourceRef:
         kind: HelmRepository
-        name: nuamx
+        name: poc-nodejs-deployment
         namespace: flux-system
   install:
     remediation:
