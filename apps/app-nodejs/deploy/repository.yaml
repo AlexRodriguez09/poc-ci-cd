@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m
-  url: oci://registry.nuamexchange.com/test-devops/charts
+  url: oci://registry.nuamexchange.com/test-devops
   type: "oci"
   secretRef:
     name: harbor-credentials

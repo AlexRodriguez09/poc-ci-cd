@@ -7,7 +7,7 @@ spec:
   releaseName: nuamx-poc-helm
   chart:
     spec:
-      chart: test-devops/charts/nodejs
+      chart: charts/nodejs
       sourceRef:
         kind: HelmRepository
         name: platform-nuamx
