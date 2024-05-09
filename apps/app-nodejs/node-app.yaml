@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m0s
-  path: ./apps/app-nodejs/deploy
+  path: ./apps/app-nodejs
   prune: true
   sourceRef:
     kind: GitRepository
