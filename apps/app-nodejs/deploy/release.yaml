@@ -10,7 +10,7 @@ spec:
       chart: test-devops/charts/nodejs
       sourceRef:
         kind: HelmRepository
-        name: nodejs
+        name: platform-nuamx
       version: '0.1.1'
   install:
     remediation:
