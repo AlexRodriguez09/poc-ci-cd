@@ -10,7 +10,7 @@ spec:
       chart: test-devops/charts/nodejs
       sourceRef:
         kind: HelmRepository
-        name: poc-nodejs-deployment
+        name: nodejs
         namespace: flux-system
   install:
     remediation:
