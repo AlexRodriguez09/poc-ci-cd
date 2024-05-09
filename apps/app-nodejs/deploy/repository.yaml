@@ -2,7 +2,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
   name: platform-nuamx
-  namespace: flux-system
+  namespace: helm-poc
 spec:
   interval: 1m
   url: oci://registry.nuamexchange.com/test-devops
