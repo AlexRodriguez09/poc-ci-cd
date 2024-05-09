@@ -17,4 +17,5 @@ spec:
       retries: -1
   interval: 10m
   values:
-    imagePull: harbor-credentials
+    deployment:
+      imagePull: harbor-credentials
