@@ -15,8 +15,9 @@ spec:
   install:
     remediation:
       retries: -1
-  interval: 3m
+  interval: 10m
   values:
     deployment:
+      namespace: helmpoc
       spec:
         replicaCount: 3
