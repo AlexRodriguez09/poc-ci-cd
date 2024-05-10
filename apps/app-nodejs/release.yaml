@@ -20,4 +20,4 @@ spec:
     deployment:
       namespace: helmpoc
       spec:
-        replicaCount: 8
+        replicaCount: 2
