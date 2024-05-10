@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
   name: nuamx-poc-helm
-  namespace: helm-poc
+  namespace: devops-poc-helm
 spec:
   releaseName: nuamx-poc-helm
   chart:
@@ -11,7 +11,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: platform-nuamx
-        namespace: helm-poc
+        namespace: devops-poc-helm
       version: '0.1.4'
   install:
     remediation:
