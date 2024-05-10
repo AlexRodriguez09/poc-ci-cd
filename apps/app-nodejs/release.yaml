@@ -12,6 +12,7 @@ spec:
         kind: HelmRepository
         name: nuamx
         namespace: flux-system
+        version: "0.1.5"
   install:
     remediation:
       retries: -1
