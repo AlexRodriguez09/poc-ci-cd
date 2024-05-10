@@ -21,4 +21,4 @@ spec:
     deployment:
       imagePull: harbor-credentials
       spec:
-        replicaCount: 4
+        replicaCount: 1
