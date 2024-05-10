@@ -12,7 +12,7 @@ spec:
         kind: HelmRepository
         name: platform-nuamx
         namespace: helm-poc
-      version: '0.1.2'
+      version: '0.1.4'
   install:
     remediation:
       retries: -1
