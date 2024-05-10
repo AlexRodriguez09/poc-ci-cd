@@ -15,4 +15,8 @@ spec:
   install:
     remediation:
       retries: -1
-  interval: 1m
+  interval: 3m
+  values:
+    deployment:
+      spec:
+        replicaCount: 3
