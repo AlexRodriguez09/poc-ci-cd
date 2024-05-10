@@ -12,12 +12,13 @@ spec:
         kind: HelmRepository
         name: platform-nuamx
         namespace: helm-poc
-      version: '0.1.1'
+      version: '0.1.2'
   install:
     remediation:
       retries: -1
   interval: 10m
   values:
     deployment:
+      imagePull: harbor-credentials
       spec:
         replicaCount: 1
