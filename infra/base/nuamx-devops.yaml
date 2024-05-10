@@ -1,0 +1,11 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: nuamx
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: oci://registry.nuamexchange.com/test-devops
+  type: "oci"
+  secretRef:
+    name: oci-creds-devops

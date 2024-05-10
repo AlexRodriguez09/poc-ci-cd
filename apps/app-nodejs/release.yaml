@@ -1,0 +1,18 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: nodejs-app
+  namespace: helmpoc
+spec:
+  releaseName: nodejs-app
+  chart:
+    spec:
+      chart: charts/nodejs
+      sourceRef:
+        kind: HelmRepository
+        name: nuamx
+        namespace: flux-system
+  install:
+    remediation:
+      retries: -1
+  interval: 1m
