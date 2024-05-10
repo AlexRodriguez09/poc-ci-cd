@@ -19,6 +19,5 @@ spec:
   interval: 10m
   values:
     deployment:
-      imagePull: harbor-credentials
       spec:
         replicaCount: 1
