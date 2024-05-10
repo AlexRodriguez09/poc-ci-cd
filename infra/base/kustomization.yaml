@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
 - oci-creds-devops.yaml
 - nuamx-devops.yaml
-- registrycredentials.yaml
+- reg-cred.yaml
