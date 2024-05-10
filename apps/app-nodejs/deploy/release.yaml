@@ -20,4 +20,4 @@ spec:
   values:
     deployment:
       spec:
-        replicaCount: 1
+        replicaCount: 3
