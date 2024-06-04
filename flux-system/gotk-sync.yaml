@@ -11,7 +11,7 @@ spec:
     branch: image-automation
   secretRef:
     name: flux-system
-  url: https://github.com/AlexRodriguez09/poc-ci-cd.git
+  url: ssh://git@github.com/AlexRodriguez09/poc-ci-cd
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
