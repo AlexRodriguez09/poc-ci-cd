@@ -2,11 +2,11 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImagePolicy
 metadata:
-  name: poc-nodejs-deployment-policy
+  name: node-policy
   namespace: image-automation
 spec:
   imageRepositoryRef:
     name: node-image-registry
   policy:
     semver:
-      range: 5.0.x
+      range: 5.x.x
