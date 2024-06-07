@@ -9,4 +9,4 @@ spec:
     name: node-image-registry
   policy:
     semver:
-      range: 5.x.x
+      range: 6.x.x
