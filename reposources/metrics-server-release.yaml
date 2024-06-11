@@ -8,11 +8,11 @@ spec:
   timeout: 5m
   chart:
     spec:
-      chart: podinfo
+      chart: metrics-server
       version: '3.12.0'
       sourceRef:
         kind: HelmRepository
-        name: metrics-server/metrics-server
+        name: metrics-server
       interval: 5m
   releaseName: metrics-server
   install:
