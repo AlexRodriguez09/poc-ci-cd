@@ -8,7 +8,7 @@ spec:
   timeout: 5m
   chart:
     spec:
-      chart: podinfo
+      chart: metrics-server
       version: '3.12.0'
       sourceRef:
         kind: HelmRepository
