@@ -14,15 +14,13 @@ spec:
         app: app-nodejs
     spec:
       containers:
-      - name: bus-app-nodejs-flux
-        image: registry.nuamexchange.com/test-devops/node-artifact:5.0.0
-        ports:
-        - containerPort: 3020
+        - name: bus-app-nodejs-flux
+          image: registry.nuamexchange.com/test-devops/node-artifact:0.0.0
+          ports:
+            - containerPort: 3020
       imagePullSecrets:
         - name: harbor-credentials-poc
-
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
@@ -36,3 +34,7 @@ spec:
       port: 3020
       targetPort: 3020
   type: ClusterIP
+  template:
+    spec:
+      containers:
+        - image: registry.nuamexchange.com/test-devops/node-artifact:0.0.0
