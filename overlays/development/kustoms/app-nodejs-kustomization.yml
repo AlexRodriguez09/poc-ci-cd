@@ -2,8 +2,8 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: kustom-app-mme-neg
-  namespace: flux-system
+  name: kustom-app-nodejs
+  namespace: development
 spec:
   dependsOn:
     - name: kustom-strimzi-kafka
@@ -12,6 +12,6 @@ spec:
   prune: true
   sourceRef:
     kind: GitRepository
-    name: flux-system
+    name: development
   timeout: 3m0s
   wait: true
