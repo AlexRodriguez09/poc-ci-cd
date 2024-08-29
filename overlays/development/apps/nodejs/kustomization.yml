@@ -3,3 +3,12 @@ kind: Kustomization
 
 resources:
   - ../../../../bases/apps/nodejs
+
+patches:
+  - patch: |-
+     - op: replace
+       path: /spec/replicas
+       value: 3
+    
+    target:
+      kind: Deployment
