@@ -6,6 +6,6 @@ resources:
 
 replicas:
  - name: poc-nodejs-deployment
-   count: 2
+   count: 1
 
 namespace: preprod
