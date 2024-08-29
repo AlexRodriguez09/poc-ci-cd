@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: poc-nodejs-deployment
+  namespace: testing-ci
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app-nodejs
+  template:
+    metadata:
+      labels:
+        app: app-nodejs
+    spec:
+      containers:
+      - name: bus-app-nodejs-flux
+        image: registry.nuamexchange.com/test-devops/node-artifact:2.0.0
+        ports:
+        - containerPort: 3020
+      imagePullSecrets:
+        - name: harbor-credentials-poc
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-nodejs-service
+  namespace: testing-ci
+spec:
+  selector:
+    app: app-nodejs
+  ports:
+    - protocol: TCP
+      port: 3020
+      targetPort: 3020
+  type: ClusterIP
