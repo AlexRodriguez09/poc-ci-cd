@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: bus-app-nodejs-flux
-        image: registry.nuamexchange.com/test-devops/node-artifact:6.7.0 # {"$imagepolicy":"flux-system:node-policy"}
+        image: registry.nuamexchange.com/test-devops/node-artifact:2.0.0
         ports:
         - containerPort: 3020
       imagePullSecrets:

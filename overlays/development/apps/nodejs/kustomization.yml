@@ -6,4 +6,4 @@ resources:
 
 replicas:
  - name: poc-nodejs-deployment
-   count: 1
+   count: 2
