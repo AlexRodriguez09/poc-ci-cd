@@ -1,0 +1,77 @@
+
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: devops-psql
+spec:
+  releaseName: devops-psql
+  chart:
+    spec:
+      chart: postgresql-ha
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+        namespace: flux-system
+      version: "12.8.2" # pin chart version, do not use "greater than" operators
+  install:
+    remediation:
+      retries: -1
+  interval: 24h0m0s
+  values:
+    nameOverride: devops-psql
+    fullnameOverride: devops-psql
+    postgresql:
+      #image:
+       #tag: 14.4.0
+       #debug: true
+      replicaCount: 2
+      database: devops
+      username: devops_admin
+      existingSecret: devops-psql-auth
+      #nodeSelector:
+      #  nuamx-core: enabled
+      initdbScriptsCM: devops-psql-scripts
+      maxConnections: "400"
+      livenessProbe:
+        initialDelaySeconds: 45
+        periodSeconds: 20
+        timeoutSeconds: 10
+        failureThreshold: 12
+        successThreshold: 1
+      readinessProbe:
+        initialDelaySeconds: 45
+        periodSeconds: 20
+        timeoutSeconds: 10
+        failureThreshold: 12
+        successThreshold: 1
+      startupProbe:
+        initialDelaySeconds: 10
+        periodSeconds: 20
+        timeoutSeconds: 10
+        failureThreshold: 20
+        successThreshold: 1
+    volumePermissions:
+      # Enable init container that changes volume permissions in the data directory (for cases where the default k8s runAsUser and fsUser values do not work)
+      enabled: true
+    persistence:
+      enabled: true
+      accessModes:
+        - ReadWriteOnce
+      size: 20Gi
+      storageClass: managed-csi
+    pgpool:
+      replicaCount: 2
+      useLoadBalancing: false
+      existingSecret: devops-psql-auth
+      reservedConnections: 1
+      numInitChildren: "100"
+      maxPool: "2"
+      childLifeTime: "120"
+      childMaxConnections: "50"
+      livenessProbe:
+        enabled: true
+        initialDelaySeconds: 40
+        periodSeconds: 15
+        timeoutSeconds: 10
+        successThreshold: 1
+        failureThreshold: 10

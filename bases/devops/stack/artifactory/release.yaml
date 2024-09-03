@@ -1,0 +1,69 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: artifactory
+spec:
+  releaseName: artifactory
+  chart:
+    spec:
+      chart: artifactory-oss
+      sourceRef:
+        kind: HelmRepository
+        name: jfrog
+        namespace: flux-system
+      version: "107.77.8"
+  timeout: 10m
+  install:
+    remediation:
+      retries: -1
+  interval: 24h0m0s
+  values:
+    artifactory:
+      #serviceAccount:
+      #  create: true
+      #rbac:
+      #  create: true
+      ingress:
+        enabled: true
+        className: nginx
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-prod
+          external-dns.alpha.kubernetes.io/hostname: artifactory.nuamexchange.com
+          nginx.ingress.kubernetes.io/configuration-snippet: |
+            more_set_headers "server: hide";
+            more_set_headers "X-Content-Type-Options: nosniff";
+            more_set_headers "X-Frame-Options: DENY";
+            more_set_headers "X-Xss-Protection: 1";
+          nginx.ingress.kubernetes.io/ssl-redirect: 'true'
+        hosts:
+          - artifactory.nuamexchange.com
+        tls:
+          - secretName: artifactory-tls
+            hosts:
+              - artifactory.nuamexchange.com
+      postgresql:
+        enabled: true
+        postgresqlPassword: password
+      # database:
+      #   type: postgresql
+      #   driver: org.postgresql.Driver
+      #   secrets:
+      #     user:
+      #       name: devops-psql-auth
+      #       key: postgresql-username
+      #     password:
+      #       name: devops-psql-auth
+      #       key: postgresql-password
+      #     url:
+      #       name: artifactory-db-url
+      #       key: url
+      artifactory:
+        persistence:
+          storageClassName: azurefile-csi-nfs
+          size: 50Gi
+        masterKeySecretName: artifactory-master-key
+        joinKeySecretName: artifactory-join-key
+      nginx:
+        enabled: false
+    postgresql:
+      enabled: true

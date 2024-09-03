@@ -1,0 +1,16 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: artifactory-db-url
+  namespace: artifactory
+spec:
+  encryptedData:
+    url: AgBNXH0m4XMU1DW7tvBQnE1T9EjSyHkd9wNZT+Md4TMubx3kio9uJYHz5hbFcqsL0vamdnvZdJxkYq/QxJfsGwv2RZtY/2kp5WwhzSNN8iljezSQUrwmmxWoe7Axiklu+brsisZ6784rpD1KaGlp/DRFgYNlhVOv23lb0FrLhL0Hyf//pvvTtFr3yAcLMDkG2LKbv7ffFzPh4rrgme+6pUVfuSL/nXgN6GmSYzniMOWutX96w6VuiuBO9a53xC+QImRx+HzwZLjPEbqxRB7bm+OTh0IIuXHtBn/U0kpf25ChqGi02d62/xXVYYTk6XGSMoTTe+jHCyc5V6LDgfDItFDlsIORXUPycoQ8dq2gsDjGsRSyV5M8EMg2j/PYLUYpdgIuYgRjt9yHbguJPxdLfacMrcG2WNqASlefaJa+jqn7W68O5zTAyJqcDTzeSfvZb0g9ZQJx1LC2fXWtGvKt0H4rqHD9iMSRRrKbS9h20RLf999pLZ8Tqjhv3q8Rkg2JaIomvXAZl0m7T/BUpsi7mH/v8g20bBNuOBfrbjXM6N2180eoVsaoPfaFSy+H7qOKjvWtlWRuet1xTlD5byD70sBtjhpNTywEO2vJeaJUO1TQizUcJkdFDxqv47T/3KqCxlXCFflrK8qsDgXxXhbi/tyZBL5MvCqNGVB8/00zBxCBME9mJPL9hb1pNe7wTXDpsd23zI9ddKtizaFq44kkg3CWhIPieFJBmrHAB5/Pm9k3TSrrZk4iz1dewgyVYqwb3SV7JQG0ZLtxcP53hmiMyt2bhQ==
+  template:
+    metadata:
+      creationTimestamp: null
+      name: artifactory-db-url
+      namespace: artifactory
+    type: Opaque

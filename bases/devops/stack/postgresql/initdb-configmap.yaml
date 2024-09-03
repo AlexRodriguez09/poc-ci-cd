@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: devops-psql-scripts
+data:
+  setup1.sql: |
+    CREATE DATABASE keycloak WITH OWNER devops_admin;
+  setup2.sql: |
+    CREATE DATABASE artifactory WITH OWNER devops_admin;

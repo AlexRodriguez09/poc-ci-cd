@@ -1,0 +1,15 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: artifactory-join-key
+  namespace: artifactory
+spec:
+  encryptedData:
+    join-key: AgAs6dUeyRBzh9FqXKb0MoPcfK4m6aa8X5nDnfwXakkynYzHWyLqrMtT9gczroQ4mFIuOcjxulJuI8+fwDf1zL2FfL+YYklBBhNBnx8HQx5fGpNpo6RuA9Cvr0wcQyy5CG54D3t2pmuUf/+yCOd24+tM9AZLQve1xrjobDT0LaIjUoqKbLrHe3ajyTsIKdF7IZbEedN07owoWuzJ8W+MRNfF0YHthmyxwIidnKwnAuIIPuwOrYPhUYtMYTm/+xYBYmcEBvnXXbOMUNJgF13UYric1vhJJr/o5P93VX9UaPfOrPNB9m3Na8DqQwZTSAE6oAUbHcMu/LDPE1BXUxRuJj0PBrQCKAspA2lLDo9hI4r8En6ZLECUjkyROYAFuknaCWCgITE+fX3vPm25+i/5u2b+A3roWGnx+ghgXdd0tj/JOL6ZtTP67D0yUSxcogaJRfymKE9KHk3HmD0xle1Tq8E+GI9Kst+B8C7P8XllYe2v34FtaK6mXCrpM0oqJoR3RDOxHEx5vSPfpV3JPFg/5bcD6vSTDEN0hvmWyUNhQ1YzaI0LBRhs7M3/GNkI945JlDleGq/FGWfF9Ol5XkBkzzeYGejMhGL/0bnjAP7y/4aHW+uugLRWva4sjL6v8U+WE4zQsY1l+mKS2RhGHt+3C/9yd61euZH/eMzNeCnNuDtlD/mGwRtQokKI3/QoDeKy0rto1Px1AoabHw1I/8kEsLbpAT98Wepa72Gg33Jjn5uP2upEJZKpHT4lpmE1fuGk1wXvfYFSsLNkHThHuRSy9Jia
+  template:
+    metadata:
+      creationTimestamp: null
+      name: artifactory-join-key
+      namespace: artifactory
+    type: Opaque
