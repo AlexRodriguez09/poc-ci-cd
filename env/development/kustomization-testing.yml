@@ -10,6 +10,6 @@ spec:
   prune: true
   sourceRef:
     kind: GitRepository
-    name: testing
+    name: development
   timeout: 5m0s
   wait: true
