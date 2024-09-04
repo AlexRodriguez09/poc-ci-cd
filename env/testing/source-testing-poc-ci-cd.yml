@@ -7,7 +7,7 @@ metadata:
 spec:
   interval: 1m0s
   ref:
-    branch: main
+    branch: testing
   url: https://github.com/AlexRodriguez09/poc-ci-cd.git
   secretRef:
     name: git-credentials
