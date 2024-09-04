@@ -5,3 +5,4 @@ resources:
 # # Link to repo. of devops
 # #- git-credentials.yaml
 - source-testing-poc-ci-cd.yml
+- testing-overlays.yml
