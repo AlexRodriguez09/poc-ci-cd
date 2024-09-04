@@ -3,7 +3,7 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: kustom-app-nodejs
-  namespace: development
+  namespace: testing
 spec:
   # dependsOn:
   #   - name: kustom-strimzi-kafka
@@ -12,6 +12,6 @@ spec:
   prune: true
   sourceRef:
     kind: GitRepository
-    name: development
+    name: testing
   timeout: 3m0s
   wait: true
