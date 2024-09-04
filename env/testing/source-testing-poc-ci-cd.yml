@@ -2,7 +2,7 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
-  name: devops-base-source
+  name: testing-source
   namespace: testing
 spec:
   interval: 1m0s
