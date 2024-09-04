@@ -4,4 +4,4 @@ resources:
 #INFRASTRUCTURE
 #- ./kustoms/
 #APPS
-- ./kustoms/app-nodejs-kustomization.yml
+- ./kustom/app-nodejs-kustomization.yml
