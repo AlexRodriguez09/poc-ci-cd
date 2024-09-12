@@ -6,6 +6,6 @@ resources:
 
 replicas:
  - name: poc-nodejs-deployment
-   count: 3
+   count: 1
 
 namespace: production
