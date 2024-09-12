@@ -8,4 +8,4 @@ replicas:
  - name: poc-nodejs-deployment
    count: 3
 
-namespace: production
+namespace: production2
