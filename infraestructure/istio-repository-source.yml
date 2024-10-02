@@ -3,7 +3,6 @@ apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: istio-repository
-  namespace: test-istio
 spec:
   interval: 10m
   url: https://istio-release.storage.googleapis.com/charts
