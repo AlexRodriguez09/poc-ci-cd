@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: istiod
-  namespace: test-istio
+  namespace: istio-system
 spec:
   interval: 10m
   timeout: 5m
@@ -13,7 +13,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: istio-repository
-        namespace: test-istio
+        namespace: istio-system
       interval: 5m
   releaseName: istiod
   install:
