@@ -1,0 +1,27 @@
+apiVersion: helm.toolkit.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: istiod
+  namespace: test-istio
+spec:
+  interval: 10m
+  timeout: 5m
+  chart:
+    spec:
+      chart: istio/istiod
+      version: '1.23.2'
+      sourceRef:
+        kind: HelmRepository
+        name: istio-repository
+        namespace: test-istio
+      interval: 5m
+  releaseName: istiod
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    pilot:
+      autoscaleMax: 3
