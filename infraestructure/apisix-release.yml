@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: apisix
-      version: '3.4.14'
+      version: '2.9.0'
       sourceRef:
         kind: HelmRepository
         name: apisix-respository
