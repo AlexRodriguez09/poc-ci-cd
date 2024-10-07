@@ -1,0 +1,33 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: apisix
+  namespace: ingress-apisix
+spec:
+  interval: 10m
+  timeout: 5m
+  chart:
+    spec:
+      chart: apisix
+      version: '3.4.14'
+      sourceRef:
+        kind: HelmRepository
+        name: apisix-respository
+      interval: 5m
+  releaseName: apisix
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    dashboard:
+      enabled: true
+
+    ingress-controller:
+      enabled: true
+      config:
+        apisix:
+          serviceNamespace: apisix
