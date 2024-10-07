@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
 - namespace.yml
 - apisix-repository.yml
-#- apisix-release.yml
+- apisix-release.yml
