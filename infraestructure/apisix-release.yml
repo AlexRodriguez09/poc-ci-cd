@@ -23,8 +23,6 @@ spec:
     remediation:
       retries: 3
   values:
-    dashboard:
-      enabled: true
     ingress-controller:
       enabled: true
       config:
