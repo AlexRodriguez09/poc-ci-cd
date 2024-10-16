@@ -68,6 +68,8 @@ jobs:
                     }')
             }
 
+            send_notification
+
             code=$?
             if [ $code -ne 0 ]; then
                 echo "An error ocurred"
@@ -82,4 +84,4 @@ jobs:
             if grep -q '"errorMessages":' <<< "$response"; then
                 error_messages=$(echo "$response" | jq -r '.errorMessages[]')
                 echo "$error_messages"
-            else
+            fi
