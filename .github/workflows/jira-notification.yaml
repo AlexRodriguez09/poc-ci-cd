@@ -1,26 +1,24 @@
 name: Notification Jira
 on: [push]
 jobs:
-notify:
+  notify:
     name: 'Notification'
     if: ${{(github.event_name == 'push' && github.actor != 'jira[bot]') || (github.event_name != 'push')}}
     runs-on: ubuntu-latest
     steps:
 
-    - name: Validate inputs
+      - name: Validate inputs
         id: notification
         run: |
-        function validate(){
-            if test $1 -eq 0; then
-                echo "$2 don't have information"
-            fi
-        }
-
-        validate $(echo -n "" | wc -m) "Issue"
-        validate $(echo -n "" | wc -m) "Jira user or Token"
-        validate $(echo -n "" | wc -m) "Jira user or Token"
-
-    - name: print tag
+          function validate(){
+              if test $1 -eq 0; then
+                  echo "$2 don't have information"
+              fi
+          }
+          validate $(echo -n "" | wc -m) "Issue"
+          validate $(echo -n "" | wc -m) "Jira user or Token"
+          validate $(echo -n "" | wc -m) "Jira user or Token"
+      - name: print tag
         run: |
             yes | sudo apt-get install jq
             response=$(curl --request POST \
@@ -65,16 +63,12 @@ notify:
                     "version": 1
                     }
                 }')
-
             echo "respuesta : $response"
             if [ $? -ne 0 ]; then
-            echo "Error: No se pudo hacer petición"
-            exit 0
+                echo "Error: No se pudo hacer petición"
+                exit 0
             fi
-        #   if grep -q '"errorMessages":' <<< "$response"; then
-        #     error_messages=$(echo "$response" | jq -r '.errorMessages[]')
-        #     echo "$error_messages"
-        #     exit 0
-        #   else
-        #     echo "Notificación exitosa"
-        #     exit 0
+            if grep -q '"errorMessages":' <<< "$response"; then
+                error_messages=$(echo "$response" | jq -r '.errorMessages[]')
+                echo "$error_messages"
+            else
