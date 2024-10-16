@@ -1,80 +1,80 @@
 name: Notification Jira
 on: [push]
-  jobs:
-    notify:
-      name: 'Notification'
-      if: ${{(github.event_name == 'push' && github.actor != 'jira[bot]') || (github.event_name != 'push')}}
-      runs-on: ubuntu-latest
-      steps:
+jobs:
+notify:
+    name: 'Notification'
+    if: ${{(github.event_name == 'push' && github.actor != 'jira[bot]') || (github.event_name != 'push')}}
+    runs-on: ubuntu-latest
+    steps:
 
-        - name: Validate inputs
-          id: notification
-          run: |
-            function validate(){
-                if test $1 -eq 0; then
-                    echo "$2 don't have information"
-                fi
-            }
+    - name: Validate inputs
+        id: notification
+        run: |
+        function validate(){
+            if test $1 -eq 0; then
+                echo "$2 don't have information"
+            fi
+        }
 
-            validate $(echo -n "" | wc -m) "Issue"
-            validate $(echo -n "" | wc -m) "Jira user or Token"
-            validate $(echo -n "" | wc -m) "Jira user or Token"
+        validate $(echo -n "" | wc -m) "Issue"
+        validate $(echo -n "" | wc -m) "Jira user or Token"
+        validate $(echo -n "" | wc -m) "Jira user or Token"
 
-        - name: print tag
-          run: |
-              yes | sudo apt-get install jq
-              response=$(curl --request POST \
-              --url 'https://nuamexchange.atlassian.net/rest/api/3/issue/issue/comment' \
-              --user 'alexander.rodriguez@nuamx.com:ATATT3xFfGF0dwDeafN1Cp6prAackBIZDW5cSaRhY8xzqtfLZnm6HAg2EamenpuD8qOvO_m3m8DDp23awhYJkYMHYtms5skbWsyMTv1v3ZTIVPWQNfEgPtwNzjYthaRrY42r4MzpO1zDHF-2sDW0uXeFDcYRq1w4Yj9b7Y9ZSkxztL5yNuJ4s2A=9D0D6595' \
-              --header 'Accept: application/json' \
-              --header 'Content-Type: application/json' \
-              --data '{
-                  "body": {
-                      "content": [
-                      {
-                          "type": "panel",
-                          "attrs": {
-                          "panelType": "error"
-                          },
-                          "content": [
-                              {
-                                  "type": "heading",
-                                  "attrs": {
-                                      "level": 2
-                                  },
-                                  "content": [
-                                  {
-                                      "type": "text",
-                                      "text": "texto"
-                                  }
-                                  ]
-                              },
-                          {
-                              "type": "paragraph",
-                              "content": [
-                              {
-                                  "type": "text",
-                                  "text": "texto"
-                              }
-                              ]
-                          }
-                          ]
-                      }
-                      ],
-                      "type": "doc",
-                      "version": 1
-                      }
-                  }')
+    - name: print tag
+        run: |
+            yes | sudo apt-get install jq
+            response=$(curl --request POST \
+            --url 'https://nuamexchange.atlassian.net/rest/api/3/issue/issue/comment' \
+            --user 'alexander.rodriguez@nuamx.com:ATATT3xFfGF0dwDeafN1Cp6prAackBIZDW5cSaRhY8xzqtfLZnm6HAg2EamenpuD8qOvO_m3m8DDp23awhYJkYMHYtms5skbWsyMTv1v3ZTIVPWQNfEgPtwNzjYthaRrY42r4MzpO1zDHF-2sDW0uXeFDcYRq1w4Yj9b7Y9ZSkxztL5yNuJ4s2A=9D0D6595' \
+            --header 'Accept: application/json' \
+            --header 'Content-Type: application/json' \
+            --data '{
+                "body": {
+                    "content": [
+                    {
+                        "type": "panel",
+                        "attrs": {
+                        "panelType": "error"
+                        },
+                        "content": [
+                            {
+                                "type": "heading",
+                                "attrs": {
+                                    "level": 2
+                                },
+                                "content": [
+                                {
+                                    "type": "text",
+                                    "text": "texto"
+                                }
+                                ]
+                            },
+                        {
+                            "type": "paragraph",
+                            "content": [
+                            {
+                                "type": "text",
+                                "text": "texto"
+                            }
+                            ]
+                        }
+                        ]
+                    }
+                    ],
+                    "type": "doc",
+                    "version": 1
+                    }
+                }')
 
-              echo "respuesta : $response"
-              if [ $? -ne 0 ]; then
-                echo "Error: No se pudo hacer petición"
-                exit 0
-              fi
-            #   if grep -q '"errorMessages":' <<< "$response"; then
-            #     error_messages=$(echo "$response" | jq -r '.errorMessages[]')
-            #     echo "$error_messages"
-            #     exit 0
-            #   else
-            #     echo "Notificación exitosa"
-            #     exit 0
+            echo "respuesta : $response"
+            if [ $? -ne 0 ]; then
+            echo "Error: No se pudo hacer petición"
+            exit 0
+            fi
+        #   if grep -q '"errorMessages":' <<< "$response"; then
+        #     error_messages=$(echo "$response" | jq -r '.errorMessages[]')
+        #     echo "$error_messages"
+        #     exit 0
+        #   else
+        #     echo "Notificación exitosa"
+        #     exit 0
