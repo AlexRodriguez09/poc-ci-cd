@@ -16,9 +16,9 @@ jobs:
                   echo "status_validation=empty" >> "$GITHUB_OUTPUT"
               fi
           }
-          validate $(echo -n "value" | wc -m) "Issue"
-          validate $(echo -n "value" | wc -m) "Jira user or Token"
-          validate $(echo -n "value" | wc -m) "Jira user or Token"
+          validate $(echo -n "" | wc -m) "Issue"
+          validate $(echo -n "" | wc -m) "Jira user or Token"
+          validate $(echo -n "" | wc -m) "Jira user or Token"
       - name: print tag
         if: ${{ steps.notification.outputs.status_validation != 'empty' }}
         run: |
