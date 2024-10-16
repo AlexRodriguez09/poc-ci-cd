@@ -13,6 +13,7 @@ jobs:
           function validate(){
               if test $1 -eq 0; then
                   echo "$2 don't have information"
+                  echo "status_validation=empty" >> "$GITHUB_OUTPUT"
               fi
           }
           validate $(echo -n "" | wc -m) "Issue"
@@ -20,12 +21,13 @@ jobs:
           validate $(echo -n "" | wc -m) "Jira user or Token"
       - name: print tag
         run: |
+            echo "the status is ${{ steps.notification.outputs.status_validation}" 
             yes | sudo apt-get install jq
 
             function send_notification {
             
                 response=$(curl --request POST \
-                --url 'https://nuamexchange.atlassian.net/rest/api/3/issue/issue/comment' \
+                --url 'https://nuamexchange.atlassian.net/rest/api/3/issue//comment' \
                 --user 'alexander.rodriguez@nuamx.com:ATATT3xFfGF0dwDeafN1Cp6prAackBIZDW5cSaRhY8xzqtfLZnm6HAg2EamenpuD8qOvO_m3m8DDp23awhYJkYMHYtms5skbWsyMTv1v3ZTIVPWQNfEgPtwNzjYthaRrY42r4MzpO1zDHF-2sDW0uXeFDcYRq1w4Yj9b7Y9ZSkxztL5yNuJ4s2A=9D0D6595' \
                 --header 'Accept: application/json' \
                 --header 'Content-Type: application/json' \
