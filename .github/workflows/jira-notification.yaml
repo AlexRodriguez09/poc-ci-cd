@@ -72,11 +72,6 @@ jobs:
 
             send_notification
 
-            if [ $? -ne 0 ]; then
-                echo "Error: No se pudo hacer petición"
-                echo "respuesta : $response"
-                exit 0
-            fi
             if grep -q '"errorMessages":' <<< "$response"; then
                 error_messages=$(echo "$response" | jq -r '.errorMessages[]')
                 echo "$error_messages"
