@@ -20,6 +20,7 @@ jobs:
           validate $(echo -n "" | wc -m) "Jira user or Token"
           validate $(echo -n "" | wc -m) "Jira user or Token"
       - name: print tag
+        if: ${{ steps.notification.outputs.status_validation}} != "empty"
         run: |
             echo "the status is ${{ steps.notification.outputs.status_validation}}" 
             yes | sudo apt-get install jq
