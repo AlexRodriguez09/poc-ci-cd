@@ -70,15 +70,9 @@ jobs:
 
             send_notification
 
-            code=$?
-            if [ $code -ne 0 ]; then
-                echo "An error ocurred"
-                exit 0
-            fi
-
-            echo "respuesta : $response"
             if [ $? -ne 0 ]; then
                 echo "Error: No se pudo hacer petición"
+                echo "respuesta : $response"
                 exit 0
             fi
             if grep -q '"errorMessages":' <<< "$response"; then
