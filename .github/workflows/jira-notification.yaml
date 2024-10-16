@@ -25,7 +25,7 @@ on: [push]
               yes | sudo apt-get install jq
               response=$(curl --request POST \
               --url 'https://nuamexchange.atlassian.net/rest/api/3/issue/issue/comment' \
-              --user 'alexander.rodriguez@nuamx.com:ATATT3xFfGF0dwDeafN1Cp6prAackBIZDW5cSaRhY8xzqtfLZnm6HAg2EamenpuD8qOvO_m3m8DDp23awhYJkYMHYtms5skbWsyMTv1v3ZTIVPWQNfEgPtwNzjYthaRrY42r4MzpO1zDHF-2sDW0uXeFDcYRq1w4Yj9b7Y9ZSkxztL5yNuJ4s2A=9D0D6595' \
+              --user 'alexander.rodriguez@nuamx.com:${{secrets.jira_token}}' \
               --header 'Accept: application/json' \
               --header 'Content-Type: application/json' \
               --data '{
